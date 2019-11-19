@@ -1,4 +1,4 @@
-pipenv shell
+pipenv shell (brew install pipenv if you dont already have it)
 
 pipenv install
 
