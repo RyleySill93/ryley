@@ -5,3 +5,5 @@ pipenv install
 ./manage.py migrate
 
 ./manage.py loaddata db.json
+
+./manage.py runserver
