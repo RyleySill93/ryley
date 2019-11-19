@@ -1,0 +1,33 @@
+from .models import Node, Account, JournalLine, JournalEntry, NodeFamily
+
+Node.objects.all().delete()
+Account.objects.all().delete()
+
+family = NodeFamily.objects.create()
+
+accounting = Node.objects.create(name='accounting', left=1, right=26, node_family=family)
+assets = Node.objects.create(name='assets', left=2, right=7, node_family=family)
+liabilities = Node.objects.create(name='liabilities', left=8, right=15, node_family=family)
+income = Node.objects.create(name='income', left=16, right=19, node_family=family)
+expense = Node.objects.create(name='expenses', left=20, right=25, node_family=family)
+cash = Node.objects.create(name='cash', left=3, right=4, node_family=family)
+due_from_mgt_co = Node.objects.create(name='due from management company', left=5, right=6, node_family=family)
+line_of_credit = Node.objects.create(name='line of credit', left=9, right=10, node_family=family)
+tax_accrual = Node.objects.create(name='tax accural', left=11, right=12, node_family=family)
+late_int_payable = Node.objects.create(name='late interest payable', left=13, right=14, node_family=family)
+interest_income = Node.objects.create(name='interest income', left=17, right=18, node_family=family)
+legal_fees = Node.objects.create(name='legal fees', left=21, right=22, node_family=family)
+audit_fees = Node.objects.create(name='audit fees', left=23, right=24, node_family=family)
+
+Account.objects.create(name='Assets', normal_balance=Account.DEBIT, node=assets)
+Account.objects.create(name='Liabilities', normal_balance=Account.CREDIT, node=liabilities)
+Account.objects.create(name='Income', normal_balance=Account.CREDIT, node=income)
+Account.objects.create(name='Expense', normal_balance=Account.DEBIT, node=expense)
+Account.objects.create(name='Cash', normal_balance=Account.DEBIT, node=cash)
+Account.objects.create(name='Due from management company', normal_balance=Account.DEBIT, node=due_from_mgt_co)
+Account.objects.create(name='Line of credit', normal_balance=Account.CREDIT, node=line_of_credit)
+Account.objects.create(name='Tax accrual', normal_balance=Account.CREDIT, node=tax_accrual)
+Account.objects.create(name='Late interest payable', normal_balance=Account.CREDIT, node=late_int_payable)
+Account.objects.create(name='Interest income', normal_balance=Account.CREDIT, node=interest_income)
+Account.objects.create(name='Legal fees', normal_balance=Account.DEBIT, node=legal_fees)
+Account.objects.create(name='Audit fees', normal_balance=Account.DEBIT, node=audit_fees)
